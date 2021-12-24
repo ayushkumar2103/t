@@ -1,7 +1,11 @@
 import { useState } from "react";
-import "styles/pizza.style.css";
+import { Modal } from "react-bootstrap";
+
+import "styles/Pizza.style.css";
 
 const Pizza = ({ pizza }) => {
+  const [showModal, setShowModal] = useState(false);
+
   const [variant, setVariant] = useState("small");
   const [quantity, setQuantity] = useState(1);
 
@@ -13,6 +17,7 @@ const Pizza = ({ pizza }) => {
         alt={pizza.name}
         style={{ width: "200px", height: "200px" }}
         className="img-fluid"
+        onClick={() => setShowModal(true)}
       />
 
       <div className="flex-container">
@@ -49,14 +54,39 @@ const Pizza = ({ pizza }) => {
       </div>
 
       {/* prices and add to cart */}
-      <div className="flex-container">
-        <div className="prices w-100 my-2">
+      <div className="flex-container mt-3">
+        <div className="prices w-100">
           <h5>Price: {pizza.prices[0][variant] * quantity}</h5>
         </div>
-        <div className="button-cart w-100 my-2">
+        <div className="button-cart w-100">
           <button className="btn btn-primary ">Add To Cart</button>
         </div>
       </div>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton onClick={() => setShowModal(false)}>
+          <Modal.Title>{pizza.name}</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <img
+            src={pizza.image}
+            alt={pizza.name}
+            className="img-fluid"
+            style={{ height: "400px" }}
+          />
+          <p>{pizza.description}</p>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <button
+            className="btn btn-danger btn-md"
+            onClick={() => setShowModal(false)}
+          >
+            Close
+          </button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
