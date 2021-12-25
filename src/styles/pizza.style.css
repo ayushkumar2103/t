@@ -1,3 +1,8 @@
+.pizza-card {
+  margin: 10px;
+  padding: 10px;
+}
+
 .pizza-name {
   font-size: 20px;
 }
@@ -12,9 +17,4 @@ select {
   box-shadow: none !important;
   border: 1px solid #000 !important;
   width: 90% !important;
-}
-
-.pizza-card {
-  margin: 10px;
-  padding: 10px;
 }
