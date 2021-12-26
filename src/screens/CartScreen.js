@@ -1,8 +1,11 @@
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { addToCart } from "actions/cart.action";
 
 import "../styles/CartScreen.style.css";
 
 const CartScreen = () => {
+  const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cartReducer);
   return (
     <div className="cart-screen container">
@@ -17,13 +20,42 @@ const CartScreen = () => {
                   <h4>{cartItem.name}</h4>
                   <p>
                     Price: {cartItem.quantity} * {"₹ "}
-                    {cartItem.price} ={"₹ "}
-                    {cartItem.prices}
+                    {cartItem.prices[0][cartItem.variant]} ={"₹ "}
+                    {cartItem.price}
                   </p>
                   <p>
-                    Quantity: <i class="fa fa-plus" aria-hidden="true"></i>
+                    Quantity:{" "}
+                    {cartItem.quantity <= 9 && (
+                      <i
+                        class="fa fa-plus"
+                        aria-hidden="true"
+                        onClick={() =>
+                          dispatch(
+                            addToCart(
+                              cartItem,
+                              cartItem.quantity + 1,
+                              cartItem.variant
+                            )
+                          )
+                        }
+                      ></i>
+                    )}
                     {cartItem.quantity}
-                    <i class="fa fa-minus" aria-hidden="true"></i>
+                    {cartItem.quantity >= 2 && (
+                      <i
+                        class="fa fa-minus"
+                        aria-hidden="true"
+                        onClick={() =>
+                          dispatch(
+                            addToCart(
+                              cartItem,
+                              cartItem.quantity - 1,
+                              cartItem.variant
+                            )
+                          )
+                        }
+                      ></i>
+                    )}
                   </p>
                 </div>
                 <div>
