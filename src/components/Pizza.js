@@ -59,7 +59,7 @@ const Pizza = ({ pizza }) => {
       {/* prices and add to cart */}
       <div className="flex-container mt-3">
         <div className="prices w-100">
-          <h5>Price: {pizza.prices[0][variant] * quantity}</h5>
+          <h5>Price: ₹ {pizza.prices[0][variant] * quantity}</h5>
         </div>
         <div className="button-cart w-100">
           <button

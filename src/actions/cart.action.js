@@ -5,7 +5,7 @@ export const addToCart = (pizza, quantity, variant) => (dispatch, getItems) => {
     image: pizza.image,
     variant: variant,
     quantity: quantity,
-    price: pizza.price,
+    price: pizza.prices[0][variant],
     prices: pizza.prices[0][variant] * quantity,
   };
 
