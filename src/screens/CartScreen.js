@@ -7,11 +7,15 @@ import "../styles/CartScreen.style.css";
 const CartScreen = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cartReducer);
+  var subtotal = cartItems.reduce(
+    (finalAmount, item) => finalAmount + item.price,
+    0
+  );
   return (
     <div className="cart-screen container">
-      <h1>My Cart</h1>
       <div className="row">
         <div className="col-md-6">
+          <h1>My Cart</h1>
           {cartItems.length === 0 && (
             <h4 className="my-2">No items in the cart!</h4>
           )}
@@ -79,6 +83,12 @@ const CartScreen = () => {
               </div>
             </>
           ))}
+        </div>
+        <div className="col-md-6 text-center">
+          <h2>
+            Subtotal: <strong>₹{subtotal}</strong> /-
+          </h2>
+          <button className="btn btn-danger">Check Out</button>
         </div>
       </div>
     </div>
