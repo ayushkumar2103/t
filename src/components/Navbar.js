@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { cartItems } = useSelector((state) => state.cartReducer);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           Pizzeria Uno
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -27,9 +28,9 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/cart">
+              <Link className="nav-link" to="/cart">
                 Cart {cartItems.length}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { addToCart } from "actions/cart.action";
+import { addToCart, deleteFromCart } from "actions/cart.action";
 
 import "../styles/CartScreen.style.css";
 
@@ -12,12 +12,17 @@ const CartScreen = () => {
       <h1>My Cart</h1>
       <div className="row">
         <div className="col-md-6">
+          {cartItems.length === 0 && (
+            <h4 className="my-2">No items in the cart!</h4>
+          )}
           {cartItems.map((cartItem) => (
             <>
               <hr />
               <div className="cart-item">
                 <div key={cartItem._id}>
-                  <h4>{cartItem.name}</h4>
+                  <h4>
+                    {cartItem.name}[{cartItem.variant}]
+                  </h4>
                   <p>
                     Price: {cartItem.quantity} * {"₹ "}
                     {cartItem.prices[0][cartItem.variant]} ={"₹ "}
@@ -64,7 +69,10 @@ const CartScreen = () => {
                     alt={cartItem.name}
                     className="img-fluid cart-image-item"
                   />
-                  <button className="mx-1 btn btn-danger">
+                  <button
+                    className="mx-1 btn btn-danger"
+                    onClick={() => dispatch(deleteFromCart(cartItem))}
+                  >
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   </button>
                 </div>

@@ -14,3 +14,11 @@ export const addToCart = (pizza, quantity, variant) => (dispatch, getItems) => {
   const CartItems = getItems().cartReducer.cartItems;
   localStorage.setItem("cartItems", JSON.stringify(CartItems));
 };
+
+export const deleteFromCart = (pizza) => (dispatch, getItems) => {
+  dispatch({ type: "DELETE_FROM_CART", payload: pizza }); // remove from state
+
+  // get items from state
+  const CartItems = getItems().cartReducer.cartItems;
+  localStorage.setItem("cartItems", JSON.stringify(CartItems));
+};
