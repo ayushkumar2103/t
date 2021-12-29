@@ -43,8 +43,11 @@ const RegisterScreen = () => {
   return (
     <div className="container">
       <ToastContainer autoClose={2000} />
-      <div className="row justify-content-center">
-        <form className="col-md-5 mt-5" onSubmit={handleSubmit}>
+      <div
+        className="shadow p-3 mb-5 bg-white rounded"
+        style={{ maxWidth: "700px", margin: "auto" }}
+      >
+        <form className="my-5" onSubmit={handleSubmit}>
           <h2>Register Account</h2>
           <input
             type="text"

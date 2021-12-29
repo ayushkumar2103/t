@@ -12,8 +12,15 @@ export const loginUser = (user) => async (dispatch) => {
       payload: { ...response.data, token: undefined },
     });
     localStorage.setItem("token", response.data.token);
+
+    return true;
   } catch (error) {
-    dispatch({ type: "LOGIN_USER_FAILED", payload: error });
+    console.log(error);
+    dispatch({
+      type: "LOGIN_USER_FAILED",
+      payload: "Invalid email or password.",
+    });
+    return false;
   }
 };
 
@@ -30,6 +37,6 @@ export const checkUserLoggedIn = () => async (dispatch) => {
       payload: { ...response.data, token: undefined },
     });
   } catch (error) {
-    dispatch({ type: "LOGIN_USER_FAILED", payload: error });
+    dispatch({ type: "LOGIN_USER_FAILED" });
   }
 };

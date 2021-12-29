@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllPizzas } from "actions/pizza.action";
 import { useSelector } from "react-redux";
+import Spinner from "components/Spinner";
+import Error from "components/Error";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -19,9 +21,13 @@ const HomeScreen = () => {
     <div className="home-screen">
       <div className="container">
         {loading ? (
-          <h3>Loading...</h3>
+          <div className="text-center">
+            <Spinner splash="Loading.." />
+          </div>
         ) : error ? (
-          <h3>Something went wrong...</h3>
+          <div className="text-center">
+            <Error />
+          </div>
         ) : (
           <div className="pizza-row">
             {pizzas?.map((pizza) => (

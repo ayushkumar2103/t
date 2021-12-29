@@ -1,4 +1,7 @@
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Navbar from "components/Navbar";
 
 import HomeScreen from "screens/Home";
@@ -6,11 +9,10 @@ import LoginScreen from "screens/LoginScreen";
 import RegisterScreen from "screens/RegisterScreen";
 import CartScreen from "screens/CartScreen";
 
+import { checkUserLoggedIn } from "actions/login.action";
+
 import "bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { checkUserLoggedIn } from "actions/login.action";
 
 function App() {
   const dispatch = useDispatch();

@@ -39,8 +39,27 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <li className="nav-item">
-                  <button className="btn btn-danger">Logout</button>
+                <li className="nav-item dropdown">
+                  <div
+                    className="nav-link dropdown-toggle"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    {user?.name}
+                  </div>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdown"
+                  >
+                    <Link to="/order" className="dropdown-item">
+                      Action
+                    </Link>
+                    <div className="dropdown-item">Logout</div>
+                    <div className="dropdown-divider"></div>
+                  </div>
                 </li>
               </>
             )}
