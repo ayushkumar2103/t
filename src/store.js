@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import { getAllPizzasReducer } from "reducers/pizza.reducer";
 import { cartReducer } from "reducers/cart.reducer";
 import { registerReducer } from "reducers/register.reducer";
+import { loginReducer } from "reducers/login.reducer";
 
 const composeEnhancers = composeWithDevTools({});
 
@@ -12,6 +13,7 @@ const combinedReducer = combineReducers({
   getAllPizzasReducer,
   cartReducer,
   registerReducer,
+  loginReducer,
 });
 
 const cartItems = localStorage.getItem("cartItems")

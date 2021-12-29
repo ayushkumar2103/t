@@ -6,9 +6,17 @@ import LoginScreen from "screens/LoginScreen";
 import RegisterScreen from "screens/RegisterScreen";
 import CartScreen from "screens/CartScreen";
 
+import "bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { checkUserLoggedIn } from "actions/login.action";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(checkUserLoggedIn());
+  }, []);
   return (
     <div className="App">
       <Navbar />

@@ -1,7 +1,13 @@
+import { registerUser } from "actions/register.action";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "styles/RegisterScreen.style.css";
 
 const RegisterScreen = () => {
+  const dispatch = useDispatch();
+
   const [credentials, setCredentials] = useState({
     fullName: "",
     email: "",
@@ -14,21 +20,29 @@ const RegisterScreen = () => {
     setCredentials({ ...credentials, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (credentials.password !== credentials.confirmPassword) {
-      alert("Passwords do not match!");
+      toast.error("Passwords do not match!");
       return;
     }
     if (credentials.password.length < 6) {
-      alert("password must be greater than 6 characters");
+      toast.error("password must be greater than 6 characters");
       return;
     }
+
+    const user = {
+      name: credentials.fullName,
+      email: credentials.email,
+      password: credentials.password,
+    };
+    dispatch(registerUser(user));
   };
 
   return (
     <div className="container">
+      <ToastContainer autoClose={2000} />
       <div className="row justify-content-center">
         <form className="col-md-5 mt-5" onSubmit={handleSubmit}>
           <h2>Register Account</h2>

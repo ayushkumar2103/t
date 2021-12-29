@@ -20,7 +20,7 @@ const CartScreen = () => {
             <h4 className="my-2">No items in the cart!</h4>
           )}
           {cartItems.map((cartItem) => (
-            <>
+            <div key={cartItem._id}>
               <hr />
               <div className="cart-item">
                 <div key={cartItem._id}>
@@ -36,7 +36,7 @@ const CartScreen = () => {
                     Quantity:{" "}
                     {cartItem.quantity <= 9 && (
                       <i
-                        class="fa fa-plus"
+                        className="fa fa-plus"
                         aria-hidden="true"
                         onClick={() =>
                           dispatch(
@@ -52,7 +52,7 @@ const CartScreen = () => {
                     {cartItem.quantity}
                     {cartItem.quantity >= 2 && (
                       <i
-                        class="fa fa-minus"
+                        className="fa fa-minus"
                         aria-hidden="true"
                         onClick={() =>
                           dispatch(
@@ -77,11 +77,11 @@ const CartScreen = () => {
                     className="mx-1 btn btn-danger"
                     onClick={() => dispatch(deleteFromCart(cartItem))}
                   >
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    <i className="fa fa-trash" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
-            </>
+            </div>
           ))}
         </div>
         <div className="col-md-6 text-center">

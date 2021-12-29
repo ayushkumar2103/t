@@ -1,7 +1,12 @@
+import { loginUser } from "actions/login.action";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 import "styles/RegisterScreen.style.css";
 
 const LoginScreen = () => {
+  const dispatch = useDispatch();
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -14,10 +19,18 @@ const LoginScreen = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!credentials.email || !credentials.password) {
+      toast.error("enter all the fields!");
+      return;
+    }
+
+    dispatch(loginUser(credentials));
   };
 
   return (
     <div className="container">
+      <ToastContainer autoClose={2000} />
       <div className="row justify-content-center">
         <form className="col-md-5 mt-5" onSubmit={handleSubmit}>
           <h2>Login Account</h2>

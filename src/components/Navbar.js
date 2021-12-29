@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { cartItems } = useSelector((state) => state.cartReducer);
+  const { user } = useSelector((state) => state.loginReducer);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
       <div className="container-fluid">
@@ -22,16 +24,26 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link " to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link " to="/register">
-                Register
-              </Link>
-            </li>
+            {!user ? (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link " to="/login">
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link " to="/register">
+                    Register
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <button className="btn btn-danger">Logout</button>
+                </li>
+              </>
+            )}
             <li className="nav-item">
               <Link className="nav-link" to="/cart">
                 Cart {cartItems.length}
