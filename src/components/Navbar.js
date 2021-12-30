@@ -1,7 +1,10 @@
+import { logoutUser } from "actions/login.action";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cartReducer);
   const { user } = useSelector((state) => state.loginReducer);
 
@@ -39,27 +42,18 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <li className="nav-item dropdown">
-                  <div
-                    className="nav-link dropdown-toggle"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    {user?.name}
+                <li className="nav-item">
+                  <div className="nav-link">
+                    <strong>{user?.name}</strong>
                   </div>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdown"
+                </li>
+                <li className="nav-item">
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => dispatch(logoutUser())}
                   >
-                    <Link to="/order" className="dropdown-item">
-                      Action
-                    </Link>
-                    <div className="dropdown-item">Logout</div>
-                    <div className="dropdown-divider"></div>
-                  </div>
+                    Logout
+                  </button>
                 </li>
               </>
             )}

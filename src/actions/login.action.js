@@ -40,3 +40,8 @@ export const checkUserLoggedIn = () => async (dispatch) => {
     dispatch({ type: "LOGIN_USER_FAILED" });
   }
 };
+
+export const logoutUser = () => (dispatch) => {
+  dispatch({ type: "LOGIN_USER_SUCCESS", payload: null });
+  localStorage.removeItem("token");
+};
