@@ -9,7 +9,7 @@ const Navbar = () => {
   const { user } = useSelector((state) => state.loginReducer);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light p-3 mb-5 bg-white rounded">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Pizzeria Uno
@@ -65,6 +65,14 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+
+      <style jsx>
+        {`
+          .navbar {
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+          }
+        `}
+      </style>
     </nav>
   );
 };

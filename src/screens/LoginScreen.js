@@ -48,7 +48,7 @@ const LoginScreen = () => {
       ) : (
         <>
           <div
-            className="shadow p-3 mb-5 bg-white rounded"
+            className="login-screen p-3 mb-5 bg-white rounded"
             style={{ maxWidth: "700px", margin: "auto" }}
           >
             {error && <Error error={error} />}
@@ -80,6 +80,14 @@ const LoginScreen = () => {
           </div>
         </>
       )}
+
+      <style jsx>
+        {`
+          .login-screen {
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+          }
+        `}
+      </style>
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Pizza = ({ pizza }) => {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="pizza-card bg-white shadow-lg text-center rounded">
+    <div className="pizza-card bg-white text-center">
       <h1 className="pizza-name py-3">{pizza.name}</h1>
       <img
         src={pizza.image}
@@ -95,6 +95,14 @@ const Pizza = ({ pizza }) => {
           </button>
         </Modal.Footer>
       </Modal>
+
+      <style jsx>
+        {`
+          .pizza-card {
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+          }
+        `}
+      </style>
     </div>
   );
 };

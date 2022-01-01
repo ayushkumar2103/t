@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { addToCart, deleteFromCart } from "actions/cart.action";
 
 import "../styles/CartScreen.style.css";
+import Stripecheckout from "components/StripeCheckout";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const CartScreen = () => {
           <h2>
             Subtotal: <strong>₹{subtotal}</strong> /-
           </h2>
-          <button className="btn btn-danger">Check Out</button>
+          <Stripecheckout amount={subtotal} />
         </div>
       </div>
     </div>

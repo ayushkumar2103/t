@@ -44,7 +44,7 @@ const RegisterScreen = () => {
     <div className="container">
       <ToastContainer autoClose={2000} />
       <div
-        className="shadow p-3 mb-5 bg-white rounded"
+        className="register-screen p-3 mb-5 bg-white rounded"
         style={{ maxWidth: "700px", margin: "auto" }}
       >
         <form className="my-5" onSubmit={handleSubmit}>
@@ -90,6 +90,14 @@ const RegisterScreen = () => {
           </button>
         </form>
       </div>
+
+      <style jsx>
+        {`
+          .register-screen {
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+          }
+        `}
+      </style>
     </div>
   );
 };
