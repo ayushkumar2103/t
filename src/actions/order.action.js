@@ -8,7 +8,7 @@ export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
 
   try {
     const response = await axios.post(
-      `http://localhost:8000/api/orders/placeorder`,
+      `http://localhost:8000/api/order/placeorder`,
       { token, subtotal, currentUser, cartItems }
     );
 
