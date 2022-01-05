@@ -6,6 +6,7 @@ import { getAllPizzasReducer } from "reducers/pizza.reducer";
 import { cartReducer } from "reducers/cart.reducer";
 import { registerReducer } from "reducers/register.reducer";
 import { loginReducer } from "reducers/login.reducer";
+import { placeOrderReducer } from "reducers/order.reducer";
 
 const composeEnhancers = composeWithDevTools({});
 
@@ -14,6 +15,7 @@ const combinedReducer = combineReducers({
   cartReducer,
   registerReducer,
   loginReducer,
+  placeOrderReducer,
 });
 
 const cartItems = localStorage.getItem("cartItems")

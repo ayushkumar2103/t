@@ -1,8 +1,12 @@
+import { placeOrder } from "actions/order.action";
+import { useDispatch } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 
 const Stripecheckout = ({ amount }) => {
+  const dispatch = useDispatch();
+
   const tokenHandler = (token) => {
-    console.log(token);
+    dispatch(placeOrder(token, amount));
   };
   return (
     <div>
